@@ -50,4 +50,9 @@ public class AccountTest {
     account200.debit(amount100);
     assertThat(account200.getBalance(), is(equalTo(amount100)));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aDebitWithANegativeAmountShouldFail() {
+    account100.debit(invalidAmount);
+  }
 }
