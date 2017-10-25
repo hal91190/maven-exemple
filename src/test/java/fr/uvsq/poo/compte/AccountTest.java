@@ -55,4 +55,9 @@ public class AccountTest {
   public void aDebitWithANegativeAmountShouldFail() {
     account100.debit(invalidAmount);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aDebitWithAnAmountHigherThanTheBalanceShouldFail() {
+    account100.debit(amount200);
+  }
 }
