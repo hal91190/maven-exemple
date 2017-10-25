@@ -78,4 +78,10 @@ public class AccountTest {
   public void aTransfertWithAnAmountHigherThanTheBalanceShouldFail() {
     account100.transfer(amount200, account100);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aTransfertFromAnAccountToHimselfShouldFail() {
+    account100.transfer(amount100, account100);
+  }
+
 }
