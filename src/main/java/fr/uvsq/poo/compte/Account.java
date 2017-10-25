@@ -62,7 +62,8 @@ class Account {
    * @throws IllegalArgumentException si le montant à transférer est négatif ou s'il est supérieur au solde du compte source
    */
   public void transfer(BigDecimal amount, Account targetAccount) {
-
+    debit(amount);
+    targetAccount.credit(amount);
   }
 
   private static void validateAmount(BigDecimal amount) {
