@@ -54,6 +54,6 @@ class Account {
    * @throws IllegalArgumentException si le montant à débiter est négatif ou s'il est supérieur au solde
    */
   public void debit(BigDecimal amount) {
-
+    balance = balance.subtract(amount);
   }
 }
