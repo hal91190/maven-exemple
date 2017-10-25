@@ -68,4 +68,14 @@ public class AccountTest {
     assertThat(account200.getBalance(), is(equalTo(amount100)));
     assertThat(account100.getBalance(), is(equalTo(amount200)));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aTransfertWithANegativeAmountShouldFail() {
+    account100.transfer(invalidAmount, account200);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aTransfertWithAnAmountHigherThanTheBalanceShouldFail() {
+    account100.transfer(amount200, account100);
+  }
 }
