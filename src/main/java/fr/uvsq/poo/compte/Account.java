@@ -9,10 +9,22 @@ import java.math.BigDecimal;
  * @version 2017
  */
 class Account {
+  private BigDecimal balance;
+
+  /**
+   * Crée un compte avec un montant initial.
+   *
+   * @param initialBalance le montant initial
+   */
   public Account(BigDecimal initialBalance) {
+    balance = initialBalance;
   }
 
+  /**
+   * Retourne le solde du compte.
+   * @return le solde du compte
+   */
   public BigDecimal getBalance() {
-    return BigDecimal.ZERO;
+    return balance;
   }
 }
