@@ -19,7 +19,7 @@ class Account {
    * @param initialBalance le montant initial
    * @throws IllegalArgumentException si le montant initial est négatif
    */
-  public Account(BigDecimal initialBalance) {
+  Account(BigDecimal initialBalance) {
     validateAmount(initialBalance);
     balance = initialBalance;
   }
@@ -28,7 +28,7 @@ class Account {
    * Retourne le solde du compte.
    * @return le solde du compte
    */
-  public BigDecimal getBalance() {
+  BigDecimal getBalance() {
     return balance;
   }
 
@@ -37,7 +37,7 @@ class Account {
    * @param amount le montant à créditer
    * @throws IllegalArgumentException si le montant à créditer est négatif
    */
-  public void credit(BigDecimal amount) {
+  void credit(BigDecimal amount) {
     validateAmount(amount);
     balance = balance.add(amount);
   }
@@ -47,7 +47,7 @@ class Account {
    * @param amount le montant à débiter
    * @throws IllegalArgumentException si le montant à débiter est négatif ou s'il est supérieur au solde
    */
-  public void debit(BigDecimal amount) {
+  void debit(BigDecimal amount) {
     validateAmount(amount);
     if (balance.compareTo(amount) < 0) {
       throw new IllegalArgumentException("Montant supérieur au solde");
@@ -61,7 +61,7 @@ class Account {
    * @param targetAccount le compte destination
    * @throws IllegalArgumentException si le montant à transférer est négatif ou s'il est supérieur au solde du compte source
    */
-  public void transfer(BigDecimal amount, Account targetAccount) {
+  void transfer(BigDecimal amount, Account targetAccount) {
     if (targetAccount == this) {
       throw new IllegalArgumentException("Virement d'un compte sur lui-même");
     }

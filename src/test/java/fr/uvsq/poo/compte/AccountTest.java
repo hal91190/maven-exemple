@@ -32,7 +32,7 @@ public class AccountTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void aCreationWithANegativeAmountShouldFail() {
-    Account account = new Account(invalidAmount);
+    new Account(invalidAmount);
   }
 
   @Test
