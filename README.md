@@ -52,9 +52,23 @@ On modifie donc le `.gitignore` en conséquence.
 ### Fixer la version 1.8 de Java pour les sources et la cible
 Il suffit pour cela d'ajouter deux propriétés dans le `pom.xml`.
 
-```bash
+```xml
 <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
 ```
+
+### Changer la version de JUnit pour la version 4.12
+On modifie la dépendance dans le `pom.xml`.
+
+```xml
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+```
+
+Il faut aussi adapter le fichier `AppTest.java` pour JUnit4.
