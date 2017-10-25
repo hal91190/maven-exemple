@@ -38,6 +38,7 @@ On génère un `jar` du projet.
 ```bash
 mvn package
 ```
+
 Cette commande crée un répertoire `target` contenant les résultats de la construction du projet.
 Ce répertoire ne doit pas être ajouté au dépôt git.
 On ajoute donc un fichier `.gitignore` à partir du modèle se trouvant sur [github](https://raw.githubusercontent.com/github/gitignore/master/Maven.gitignore).
@@ -46,3 +47,14 @@ On ajoute donc un fichier `.gitignore` à partir du modèle se trouvant sur [git
 La plupart des IDEs permettent d'importer un projet Maven.
 Il est préférable de ne pas ajouter les fichiers spécifiques à l'IDE dans le dépôt git.
 On modifie donc le `.gitignore` en conséquence.
+
+## Étape 2 : configurer le projet
+### Fixer la version 1.8 de Java pour les sources et la cible
+Il suffit pour cela d'ajouter deux propriétés dans le `pom.xml`.
+
+```bash
+<properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+```
