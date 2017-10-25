@@ -176,3 +176,16 @@ Le plugin [`javadoc`](https://maven.apache.org/plugins/maven-javadoc-plugin/) pe
     </plugins>
 </build>
 ```
+
+### Intégrer l'extension Hamcrest pour JUnit
+Cette [extension]() apporte un syntaxe plus lisible pour les tests JUnit.
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-all</artifactId>
+    <version>1.3</version>
+    <scope>test</scope>
+</dependency>
+```
