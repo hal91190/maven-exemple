@@ -38,4 +38,10 @@ public class AccountTest {
     account.credit(amount100);
     assertThat(account.getBalance(), is(equalTo(amount200)));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void aCreditWithANegativeAmountShouldFail() {
+    Account account = new Account(amount100);
+    account.credit(invalidAmount);
+  }
 }
