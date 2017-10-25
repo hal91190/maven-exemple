@@ -62,6 +62,9 @@ class Account {
    * @throws IllegalArgumentException si le montant à transférer est négatif ou s'il est supérieur au solde du compte source
    */
   public void transfer(BigDecimal amount, Account targetAccount) {
+    if (targetAccount == this) {
+      throw new IllegalArgumentException("Virement d'un compte sur lui-même");
+    }
     debit(amount);
     targetAccount.credit(amount);
   }
