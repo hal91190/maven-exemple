@@ -38,6 +38,9 @@ class Account {
    * @param amount le montant à créditer
    */
   public void credit(BigDecimal amount) {
+    if (amount.compareTo(ZERO) < 0) {
+      throw new IllegalArgumentException("Montant invalide");
+    }
     balance = balance.add(amount);
   }
 }
