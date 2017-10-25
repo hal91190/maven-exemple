@@ -60,4 +60,12 @@ public class AccountTest {
   public void aDebitWithAnAmountHigherThanTheBalanceShouldFail() {
     account100.debit(amount200);
   }
+
+  @Test
+  public void aTransfertShouldDebitAnAccountAndCreditAnotherOne() {
+    Account account200 = new Account(amount200);
+    account200.transfer(amount100, account100);
+    assertThat(account200.getBalance(), is(equalTo(amount100)));
+    assertThat(account100.getBalance(), is(equalTo(amount200)));
+  }
 }

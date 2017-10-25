@@ -55,6 +55,16 @@ class Account {
     balance = balance.subtract(amount);
   }
 
+  /**
+   * Transfère une somme d'un compte à un autre.
+   * @param amount le montant à transférer
+   * @param targetAccount le compte destination
+   * @throws IllegalArgumentException si le montant à transférer est négatif ou s'il est supérieur au solde du compte source
+   */
+  public void transfer(BigDecimal amount, Account targetAccount) {
+
+  }
+
   private static void validateAmount(BigDecimal amount) {
     if (amount.compareTo(ZERO) < 0) {
       throw new IllegalArgumentException("Montant invalide");
