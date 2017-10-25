@@ -43,4 +43,11 @@ public class AccountTest {
   public void aCreditWithANegativeAmountShouldFail() {
     account100.credit(invalidAmount);
   }
+
+  @Test
+  public void anAccountDebitedWithAnAmountShouldHaveABalanceDecreasedByThisAmount() {
+    Account account200 = new Account(amount200);
+    account200.debit(amount100);
+    assertThat(account200.getBalance(), is(equalTo(amount100)));
+  }
 }

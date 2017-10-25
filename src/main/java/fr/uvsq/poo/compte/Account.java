@@ -47,4 +47,13 @@ class Account {
       throw new IllegalArgumentException("Montant invalide");
     }
   }
+
+  /**
+   * Débite le compte.
+   * @param amount le montant à débiter
+   * @throws IllegalArgumentException si le montant à débiter est négatif ou s'il est supérieur au solde
+   */
+  public void debit(BigDecimal amount) {
+
+  }
 }
