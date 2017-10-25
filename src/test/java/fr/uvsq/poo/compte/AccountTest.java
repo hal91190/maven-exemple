@@ -10,21 +10,22 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AccountTest {
-  BigDecimal amount100;
-  BigDecimal amount200;
-  BigDecimal invalidAmount;
+  private BigDecimal amount100;
+  private BigDecimal amount200;
+  private BigDecimal invalidAmount;
+  private Account account100;
 
   @Before
   public void setup() {
     amount100 = new BigDecimal("100");
     amount200 = new BigDecimal("200");
     invalidAmount = new BigDecimal("-100");
+    account100 = new Account(amount100);
   }
 
   @Test
   public void anAccountCreatedWithAnAmountShouldHaveABalanceEqualsToThisAmount() {
-    Account account = new Account(amount100);
-    assertThat(account.getBalance(), is(equalTo(amount100)));
+    assertThat(account100.getBalance(), is(equalTo(amount100)));
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -34,14 +35,12 @@ public class AccountTest {
 
   @Test
   public void anAccountCreditedWithAnAmountShouldHaveABalanceIncreasedByThisAmount() {
-    Account account = new Account(amount100);
-    account.credit(amount100);
-    assertThat(account.getBalance(), is(equalTo(amount200)));
+    account100.credit(amount100);
+    assertThat(account100.getBalance(), is(equalTo(amount200)));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void aCreditWithANegativeAmountShouldFail() {
-    Account account = new Account(amount100);
-    account.credit(invalidAmount);
+    account100.credit(invalidAmount);
   }
 }
