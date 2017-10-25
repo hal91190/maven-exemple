@@ -130,3 +130,26 @@ Le plugin [`assembly`](https://maven.apache.org/plugins/maven-assembly-plugin/) 
     </plugins>
 </build>
 ```
+
+### Créer un `jar` des sources du projet
+Le plugin [`source`](https://maven.apache.org/plugins/maven-source-plugin/) permet de générer une archive des sources du projet.
+
+```xml
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+```
