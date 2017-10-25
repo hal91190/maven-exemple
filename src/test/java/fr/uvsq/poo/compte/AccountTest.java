@@ -14,6 +14,7 @@ public class AccountTest {
   private BigDecimal amount200;
   private BigDecimal invalidAmount;
   private Account account100;
+  private Account account200;
 
   @Before
   public void setup() {
@@ -21,6 +22,7 @@ public class AccountTest {
     amount200 = new BigDecimal("200");
     invalidAmount = new BigDecimal("-100");
     account100 = new Account(amount100);
+    account200 = new Account(amount200);
   }
 
   @Test
@@ -46,7 +48,6 @@ public class AccountTest {
 
   @Test
   public void anAccountDebitedWithAnAmountShouldHaveABalanceDecreasedByThisAmount() {
-    Account account200 = new Account(amount200);
     account200.debit(amount100);
     assertThat(account200.getBalance(), is(equalTo(amount100)));
   }
@@ -63,7 +64,6 @@ public class AccountTest {
 
   @Test
   public void aTransfertShouldDebitAnAccountAndCreditAnotherOne() {
-    Account account200 = new Account(amount200);
     account200.transfer(amount100, account100);
     assertThat(account200.getBalance(), is(equalTo(amount100)));
     assertThat(account100.getBalance(), is(equalTo(amount200)));
