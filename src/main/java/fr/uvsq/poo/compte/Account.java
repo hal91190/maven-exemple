@@ -32,4 +32,12 @@ class Account {
   public BigDecimal getBalance() {
     return balance;
   }
+
+  /**
+   * Crédite le compte.
+   * @param amount le montant à créditer
+   */
+  public void credit(BigDecimal amount) {
+
+  }
 }
