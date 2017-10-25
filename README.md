@@ -96,3 +96,37 @@ Pour cela, il indiquer à Maven d'ajouter un fichier `Manifest` dans le `jar` en
 ```
 
 À partir de là, il est possible d'exécuter l'application avec `java -jar target/maven-exemple-1.0-SNAPSHOT.jar`.
+
+## Étape 3 : améliorer le projet (optionnel)
+### Créer un `jar` intégrant les dépendances
+Le plugin [`assembly`](https://maven.apache.org/plugins/maven-assembly-plugin/) permet de générer une archive contenant l'ensemble des dépendances d'un projet.
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                    <manifest>
+                        <mainClass>${main-class}</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
