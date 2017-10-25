@@ -189,3 +189,5 @@ Cette [extension]() apporte un syntaxe plus lisible pour les tests JUnit.
     <scope>test</scope>
 </dependency>
 ```
+
+### Étape 4 : implémenter la classe `Account` et les tests unitaires
