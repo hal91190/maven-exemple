@@ -2,14 +2,14 @@
 
 ## Étape 1 : initialiser le projet
 ### Créer le projet à partir d'un archétype
-Même s'il est un peu daté, l'archétype `org.apache.maven.archetypes:maven-archetype-quickstart` permet de créer un squelette de projet Maven/Java.
+L'archétype `org.apache.maven.archetypes:maven-archetype-quickstart` permet de créer un squelette de projet Maven/Java.
 
 ```bash
 mvn archetype:generate \
     -DinteractiveMode=false \
     -DarchetypeGroupId=org.apache.maven.archetypes \
     -DarchetypeArtifactId=maven-archetype-quickstart \
-    -DarchetypeVersion=1.1 \
+    -DarchetypeVersion=1.4 \
     -DgroupId=fr.uvsq.poo \
     -DartifactId=maven-exemple \
     -Dpackage=fr.uvsq.poo.compte
@@ -49,29 +49,27 @@ Il est préférable de ne pas ajouter les fichiers spécifiques à l'IDE dans le
 On modifie donc le `.gitignore` en conséquence.
 
 ## Étape 2 : configurer le projet
-### Fixer la version 1.8 de Java pour les sources et la cible
+### Fixer la version 11 de Java pour les sources et la cible
 Il suffit pour cela d'ajouter deux propriétés dans le `pom.xml`.
 
 ```xml
 <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
 </properties>
 ```
 
-### Changer la version de JUnit pour la version 4.12
+### Changer la version de JUnit pour la version 4.13.1
 On modifie la dépendance dans le `pom.xml`.
 
 ```xml
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
-    <version>4.12</version>
+    <version>4.13.1</version>
     <scope>test</scope>
 </dependency>
 ```
-
-Il faut aussi adapter le fichier `AppTest.java` pour JUnit4.
 
 ### Rendre le `jar` exécutable
 Pour cela, il indiquer à Maven d'ajouter un fichier `Manifest` dans le `jar` en précisant l'attribut `Main-class`.
