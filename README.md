@@ -1,5 +1,7 @@
 # Exemple de projet Maven/Java
 
+La branche `master` utilise JUnit 4 alors que la branche `junit5` utilise JUnit 5 pour les tests unitaires.
+
 ## Étape 1 : initialiser le projet
 ### Créer le projet à partir d'un archétype
 L'archétype `org.apache.maven.archetypes:maven-archetype-quickstart` permet de créer un squelette de projet Maven/Java.
