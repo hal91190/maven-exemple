@@ -8,7 +8,7 @@ import static java.math.BigDecimal.ZERO;
  * La classe <code>Account</code> représente un compte bancaire.
  *
  * @author Stéphane Lopes
- * @version 2017
+ * @version 2020
  */
 class Account {
   private BigDecimal balance;
