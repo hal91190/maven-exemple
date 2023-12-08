@@ -14,3 +14,6 @@ buildNumber.properties
 # IntelliJ files
 .idea/
 maven-exemple.iml
+
+# VScode files
+.vscode/

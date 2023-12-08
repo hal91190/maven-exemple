@@ -1,13 +1,15 @@
 package fr.uvsq.poo.compte;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AccountTest {
   private BigDecimal amount100;
@@ -16,7 +18,7 @@ public class AccountTest {
   private Account account100;
   private Account account200;
 
-  @Before
+  @BeforeEach
   public void setup() {
     amount100 = new BigDecimal("100");
     amount200 = new BigDecimal("200");
@@ -30,9 +32,10 @@ public class AccountTest {
     assertThat(account100.getBalance(), is(equalTo(amount100)));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aCreationWithANegativeAmountShouldFail() {
-    new Account(invalidAmount);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> new Account(invalidAmount));
+    assertEquals("Montant invalide", exception.getMessage());
   }
 
   @Test
@@ -41,9 +44,10 @@ public class AccountTest {
     assertThat(account100.getBalance(), is(equalTo(amount200)));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aCreditWithANegativeAmountShouldFail() {
-    account100.credit(invalidAmount);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.credit(invalidAmount));
+    assertEquals("Montant invalide", exception.getMessage());
   }
 
   @Test
@@ -52,14 +56,16 @@ public class AccountTest {
     assertThat(account200.getBalance(), is(equalTo(amount100)));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aDebitWithANegativeAmountShouldFail() {
-    account100.debit(invalidAmount);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.debit(invalidAmount));
+    assertEquals("Montant invalide", exception.getMessage());
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aDebitWithAnAmountHigherThanTheBalanceShouldFail() {
-    account100.debit(amount200);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.debit(amount200));
+    assertEquals("Montant supérieur au solde", exception.getMessage());
   }
 
   @Test
@@ -69,19 +75,21 @@ public class AccountTest {
     assertThat(account100.getBalance(), is(equalTo(amount200)));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aTransfertWithANegativeAmountShouldFail() {
-    account100.transfer(invalidAmount, account200);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.transfer(invalidAmount, account200));
+    assertEquals("Montant invalide", exception.getMessage());
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aTransfertWithAnAmountHigherThanTheBalanceShouldFail() {
-    account100.transfer(amount200, account100);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.transfer(amount200, account200));
+    assertEquals("Montant supérieur au solde", exception.getMessage());
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void aTransfertFromAnAccountToHimselfShouldFail() {
-    account100.transfer(amount100, account100);
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> account100.transfer(amount100, account100));
+    assertEquals("Virement d'un compte sur lui-même", exception.getMessage());
   }
-
 }
