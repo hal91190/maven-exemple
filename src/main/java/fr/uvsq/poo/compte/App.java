@@ -1,13 +1,16 @@
 package fr.uvsq.poo.compte;
 
 /**
- * Hello world!
+ * Main class of the application.
  *
  */
-public class App
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class App {
+  /**
+  * Entry point of the app.
+  *
+  * @param args Command line arguments
+  */
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+  }
 }

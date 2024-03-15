@@ -26,6 +26,7 @@ class Account {
 
   /**
    * Retourne le solde du compte.
+   *
    * @return le solde du compte
    */
   BigDecimal getBalance() {
@@ -34,6 +35,7 @@ class Account {
 
   /**
    * Crédite le compte.
+   *
    * @param amount le montant à créditer
    * @throws IllegalArgumentException si le montant à créditer est négatif
    */
